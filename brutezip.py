@@ -1,23 +1,29 @@
-import zipfile
+#usage python brutezip.py
 
-def brute_force(zip_path, wordlist):
+import rarfile
+
+def brute_force_rar(rar_path, wordlist_path):
     try:
-        zip_file = zipfile.ZipFile(zip_path)
+        rf = rarfile.RarFile(rar_path)
     except FileNotFoundError:
-        print("[!] File ZIP tidak ditemukan.")
+        print("[!] File RAR tidak ditemukan.")
+        return
+    except rarfile.BadRarFile:
+        print("[!] File bukan RAR atau rusak.")
         return
 
-    with open(wordlist, "r") as file:
-        for line in file:
+    with open(wordlist_path, 'r') as f:
+        for line in f:
             password = line.strip()
             try:
-                zip_file.extractall(pwd=bytes(password, 'utf-8'))
+                rf.extractall(pwd=password)
                 print(f"[✓] Password ditemukan: {password}")
                 return
-            except:
+            except rarfile.BadRarFile:
                 print(f"[x] Salah: {password}")
+            except Exception as e:
+                print(f"[!] Error: {e}")
     
-    print("[-] Gagal menemukan password yang cocok.")
+    print("[-] Gagal menemukan password.")
 
-# Jalankan brute force
-brute_force("target.zip", "wordlist.txt")
+brute_force_rar("Secret.rar", "pass.txt") #edit yang ini
