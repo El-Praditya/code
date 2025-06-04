@@ -1,5 +1,3 @@
-#usage python bruterar.py
-
 import rarfile
 
 def brute_force_rar(rar_path, wordlist_path):
