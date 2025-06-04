@@ -1,3 +1,5 @@
+# Jika mengalami kesulitan, temui aku di medium 
+# https://medium.com/@leerlryzck9/bypassing-rar-passwords-using-brute-force-method-4a6ada33f6c5
 import rarfile
 
 def brute_force_rar(rar_path, wordlist_path):
