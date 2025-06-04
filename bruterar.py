@@ -1,4 +1,4 @@
-#usage python brutezip.py
+#usage python bruterar.py
 
 import rarfile
 
