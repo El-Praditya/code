@@ -1,1 +1,1 @@
-Dibuat hanya unutuk dokumentasi author
+Dokumentasi hehe
